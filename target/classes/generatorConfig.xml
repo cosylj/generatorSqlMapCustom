@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="testTables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释，true：是；false:否 -->
+            <property name="suppressAllComments" value="false" />
+        </commentGenerator>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.22.201:3306/ivollo?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="halove_mysql"
+                        password="halove147258369">
+        </jdbcConnection>
+
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+            NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="com.halove.po"
+                            targetProject=".\src">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="com.halove.mapper"
+                         targetProject=".\src">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <!--
+        targetPackage：mapper接口生成的位置，遵循MyBatis规范，让mapper.xml
+        和mapper.java在同一目录下
+         -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.halove.dao"
+                             targetProject=".\src">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <!-- 指定数据库表 -->
+
+       <!-- <table schema="ivollo" tableName="user_token"
+               domainObjectName="UserTokenPO" enableInsert="true"
+               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true" enableSelectByExample="true">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>-->
+
+        <table schema="" tableName="user_token"
+            enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
+            enableCountByExample="false" enableSelectByExample="false"
+            enableDeleteByExample="false" enableUpdateByExample="false"
+            selectByExampleQueryId="false" >
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+    </context>
+</generatorConfiguration>
